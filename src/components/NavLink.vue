@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="link">
-    <q-item clickable tag="div">
+  <!-- <router-link :to="link"> -->
+    <q-item clickable tag="div" :to="link" exact>
       <q-item-section v-if="icon" avatar>
         <q-icon :name="icon" />
       </q-item-section>
@@ -10,7 +10,7 @@
         <!-- <q-item-label caption>{{ caption }}</q-item-label> -->
       </q-item-section>
     </q-item>
-  </router-link>
+  <!-- </router-link> -->
 </template>
 
 <script>

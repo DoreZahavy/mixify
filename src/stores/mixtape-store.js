@@ -23,7 +23,7 @@ export const useMixtapeStore = defineStore("counter", {
     async removeMixtape(mixtapeId) {
       try {
         const res = await mixtapeService.remove(mixtapeId);
-        const idx = this.mixtapes.findIndex((mixtape) => mixtape._id === mixtapeId);
+        const idx = this.mixtapes.findIndex(m => m._id === mixtapeId);
         this.mixtapes.splice(idx, 1);
         return Promise.resolve();
       } catch (err) {
@@ -35,10 +35,12 @@ export const useMixtapeStore = defineStore("counter", {
       try {
         const savedMixtape = await mixtapeService.save(mixtapeToSave);
         if (mixtapeToSave._id) {
-          const idx = this.mixtapes.findIndex((t) => t._id === mixtape._id);
-          this.mixtapes[idx] = mixtape;
+          console.log('putting in store');
+          const idx = this.mixtapes.findIndex(m => m._id === savedMixtape._id);
+          this.mixtapes[idx] = savedMixtape;
         } else {
-          this.mixtapes.push(mixtape);
+          console.log('posting in store');
+          this.mixtapes.push(savedMixtape);
         }
         return savedMixtape;
       } catch (err) {

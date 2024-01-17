@@ -25,7 +25,7 @@
             <!-- <q-item-label caption>{{ caption }}</q-item-label> -->
           </q-item-section>
         </q-item>
-        <LibraryList :mixtapes="mixtapes" />
+        <LibraryList v-if="mixtapes" :mixtapes="mixtapes" />
       </section>
 
     </q-drawer>

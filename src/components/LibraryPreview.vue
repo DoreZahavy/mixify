@@ -1,7 +1,7 @@
 <template>
-    <router-link :to="`/mixtape/${mixtape._id}`">
+    <!-- <router-link :to="`/mixtape/${mixtape._id}`"> -->
 
-        <q-item clickable v-ripple >
+        <q-item clickable v-ripple :to="`/mixtape/${mixtape._id}`" >
             <q-item-section avatar>
                 <q-avatar>
                     
@@ -11,10 +11,10 @@
             
             <q-item-section>
                 <q-item-label>{{mixtape.name}}</q-item-label>
-                <q-item-label caption>Playlist * {{ mixtape.createdBy.nickname }}</q-item-label>
+                <q-item-label caption>Playlist * {{ mixtape.createdBy?.nickname }}</q-item-label>
             </q-item-section>
         </q-item>
-    </router-link>
+    <!-- </router-link> -->
    
 </template>
 

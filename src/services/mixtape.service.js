@@ -40,9 +40,12 @@ async function remove(mixtapeId) {
 }
 
 async function save(mixtape) {
-   if (mixtape.id) {
-       return await storageService.put(MIXTAPE_KEY, mixtape)
-   } else {
+  if (mixtape._id) {
+    console.log('putting in service');
+    return await storageService.put(MIXTAPE_KEY, mixtape)
+  } else {
+    console.log("🚀 ~ save ~ mixtape:", mixtape)
+     console.log('posting in service');
        return await storageService.post(MIXTAPE_KEY, mixtape)
    }
 }
@@ -54,6 +57,7 @@ function _createMixtapes() {
       {
         "_id": "5cksxjas89dfhjdfhxjsa8jxs09",
         "name": "Rock & Roll Baby",
+        "desc": "Rock & Roll is the best stuuf ever I tell you dat",
         "createdBy": {
           "_id": "u101",
           "nickname": "DoreZ",
@@ -63,6 +67,7 @@ function _createMixtapes() {
       {
         "_id": "5cksxjas8dfhjsa8jxs09",
         "name": "good old times",
+        "desc": "If you wanna have a good ol time you MUST listen to this stuff it'll blow your hat right off",
         "createdBy": {
           "_id": "u101",
           "nickname": "DoreZ",
@@ -72,6 +77,7 @@ function _createMixtapes() {
       {
         "_id": "5cksxgfbrt89xjsa8xjsa8jxs09",
         "name": "Funky Monday",
+        "desc": "That's are you ready for some funky times??",
         "createdBy": {
           "_id": "u101",
           "nickname": "DoreZ",
@@ -81,6 +87,7 @@ function _createMixtapes() {
       {
         "_id": "5cksxjasrnttrnmjsa8jxs09",
         "name": "Relaxin time",
+        "desc": "Time to relax",
         "createdBy": {
           "_id": "u101",
           "nickname": "DoreZ",
@@ -90,6 +97,7 @@ function _createMixtapes() {
       {
         "_id": "5cksxjasrntxjsa8jxs09",
         "name": "Upbeat weekend",
+        "desc": "Get your blood pumpin for the weekend",
         "createdBy": {
           "_id": "u101",
           "nickname": "DoreZ",
