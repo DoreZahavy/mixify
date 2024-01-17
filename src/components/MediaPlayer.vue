@@ -1,0 +1,29 @@
+<template>
+    <div class="q-pa-md">
+     
+    </div>
+  </template>
+
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'AudioDense',
+  components: {
+    // QMediaPlayer
+  },
+
+  setup () {
+    const sources = [
+      {
+        src: 'https://raw.githubusercontent.com/quasarframework/quasar-ui-qmediaplayer/dev/demo/public/media/Scott_Holmes_-_04_-_Upbeat_Party.mp3',
+        type: 'audio/mp3'
+      }
+    ]
+
+    return {
+      sources
+    }
+  }
+})
+</script>

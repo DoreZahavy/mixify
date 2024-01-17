@@ -4,9 +4,23 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
+    getRandomIntExclusive,
     loadFromStorage,
     saveToStorage,
-    animateCSS
+    debounce
+}
+
+function debounce(fn, wait = 1000) {
+    let timer
+    return function (...args) {
+        if (timer) {
+            clearTimeout(timer) // clear any pre-existing timer
+        }
+        const context = this // get the current context
+        timer = setTimeout(() => {
+            fn.apply(context, args) // call the function if time expires
+        }, wait)
+    }
 }
 
 function makeId(length = 6) {
@@ -36,6 +50,12 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
+function getRandomIntExclusive(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min )) + min //The maximum is inclusive and the minimum is inclusive 
+}
+
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
 }
@@ -43,22 +63,4 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
-}
-
-
-function animateCSS(el, animation) {
-    const prefix = 'animate__'
-    return new Promise((resolve, reject) => {
-        const animationName = `${prefix}${animation}`
-
-        el.classList.add(`${prefix}animated`, animationName)
-
-        // When the animation ends, we clean the classes and resolve the Promise
-        function handleAnimationEnd(event) {
-            event.stopPropagation()
-            el.classList.remove(`${prefix}animated`, animationName)
-            resolve('Animation ended')
-        }
-        el.addEventListener('animationend', handleAnimationEnd, { once: true })
-    })
 }
