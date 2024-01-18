@@ -11,7 +11,10 @@
     </q-banner>
    
     <q-list>
-      <q-item clickable v-ripple v-for="song in mixtape.songs" :key="song.id">
+      <q-item  v-ripple v-for="song in mixtape.songs" :key="song.id">
+        <q-item-section avatar>
+          <q-icon @click="onPlaySong(song.id)" name="play_circle"></q-icon>
+        </q-item-section>
         <q-item-section avatar>
           <q-avatar>
             <img :src="song.imgUrl" alt="song image">
@@ -53,6 +56,7 @@ import { youtubeService } from 'src/services/youtube.service';
 import { mixtapeService } from 'src/services/mixtape.service';
 import { utilService } from 'src/services/util.service';
 import { useMixtapeStore } from 'src/stores/mixtape-store';
+import { usePlayerStore } from 'stores/player-store';
 
 export default {
   name: 'MixtapeDetails',
@@ -63,6 +67,7 @@ export default {
 
     const route = useRoute();
     const mixtapeStore = useMixtapeStore()
+    const playerStore = usePlayerStore()
     console.log('mixtape:', mixtape)
 
     const mixtapeId = route.params.id
@@ -74,11 +79,15 @@ export default {
     onMounted(async () => {
       try {
         mixtape.value = await mixtapeService.get(mixtapeId)
-        console.log('mixtape:', mixtape.value)
       } catch (err) {
         console.error(err)
       }
     })
+
+    const onPlaySong = (videoId) => {
+    
+      playerStore.setCurrVideoId(videoId)
+    }
 
     const searchSongs = async () => {
       try {
@@ -94,7 +103,7 @@ export default {
     const onAddSong = async (song) => {
       try {
         
-        const updatedMixtape = await mixtapeService.save({ ...mixtape.value, songs:songs.length? [song, ...mixtape.value.songs]:[song] })
+        const updatedMixtape = await mixtapeService.save({ ...mixtape.value, songs:mixtape.value.songs.length? [song, ...mixtape.value.songs]:[song] })
         mixtape.value = updatedMixtape
         // const updatedMixtape = await mixtapeStore.saveMixtape({ ...mixtape.value, songs:songs.length? [song, ...mixtape.value.songs]:[song] })
         // mixtape.value = updatedMixtape
@@ -107,7 +116,8 @@ export default {
       // debouncedSearchSongs,
       mixtape,
       songs,
-      onAddSong
+      onAddSong,
+      onPlaySong
 
 
     }

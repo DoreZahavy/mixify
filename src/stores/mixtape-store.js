@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { mixtapeService } from "src/services/mixtape.service";
 
-export const useMixtapeStore = defineStore("counter", {
+export const useMixtapeStore = defineStore("mixtape", {
   state: () => ({
     mixtapes: [],
   }),

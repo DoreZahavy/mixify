@@ -18,7 +18,7 @@
 
         <q-item clickable tag="div" @click="toggleDrawerSize">
           <q-item-section avatar>
-            <q-icon name="menu" />
+            <q-icon name="music_note" />
           </q-item-section>
           <q-item-section>
             <q-item-label>My library</q-item-label>
@@ -33,6 +33,18 @@
       <router-view />
     </q-page-container>
     <MainFooter />
+    <!-- <q-footer elevated class="bg-grey-8 text-white">
+    
+
+    <q-toolbar class="lt-sm">
+      <q-toolbar-title>
+        <q-avatar>
+          <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+        </q-avatar>
+        <div>Title</div>
+      </q-toolbar-title>
+    </q-toolbar>
+  </q-footer> -->
 
   </q-layout>
 </template>
@@ -43,7 +55,7 @@ import NavLink from 'components/NavLink.vue'
 import MediaPlayer from 'components/MediaPlayer.vue'
 import MainFooter from 'components/MainFooter.vue'
 import LibraryList from 'components/LibraryList.vue'
-import { useMixtapeStore } from 'src/stores/mixtape-store'
+import { useMixtapeStore } from 'stores/mixtape-store'
 
 const links = [
   {
@@ -80,6 +92,8 @@ export default defineComponent({
     onMounted( () => {
       mixtapeStore.loadMixtapes()
     });
+
+    
     const mixtapes = computed(()=> mixtapeStore.getMixtapes )
     const drawerMini = ref(true)
     const drawerOpen = ref(true);
