@@ -1,1 +1,0 @@
-import{Q as e}from"./QPage.4f43ebb8.js";import{_ as a,y as r,z as t,A as o,I as s}from"./index.a143abc5.js";import"./render.c391207e.js";const c={name:"SearchPage"},n=s("h1",null,"Search",-1);function _(p,d,i,f,h,m){return r(),t(e,{padding:""},{default:o(()=>[n]),_:1})}var x=a(c,[["render",_]]);export{x as default};

@@ -1,0 +1,1 @@
+import{Q as e}from"./QPage.dd8a4db8.js";import{_ as a,y as t,z as o,A as r,I as s}from"./index.51654f13.js";import"./render.e8cb268c.js";const n={name:"SignupPage"},p=s("h1",null,"Signup",-1);function c(i,_,d,u,f,g){return t(),o(e,{padding:""},{default:r(()=>[p]),_:1})}var x=a(n,[["render",c]]);export{x as default};
