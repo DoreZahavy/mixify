@@ -1,5 +1,6 @@
 {
   "name": "mixify",
+  "homepage": "https://dorezahavy.github.io/mixify/",
   "version": "0.0.1",
   "description": "Mixing humans and music!",
   "productName": "mixify",
@@ -8,7 +9,9 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "build": "quasar build"
+    "build": "quasar build",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist/spa"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "@quasar/app-vite": "^1.3.0",
     "autoprefixer": "^10.4.2",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.14"
   },
   "engines": {
