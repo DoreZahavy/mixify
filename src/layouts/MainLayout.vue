@@ -18,11 +18,14 @@
 
         <q-item clickable tag="div" @click="toggleDrawerSize">
           <q-item-section avatar>
-            <q-icon name="music_note" />
+            <q-icon name="album" />
           </q-item-section>
           <q-item-section>
             <q-item-label>My library</q-item-label>
             <!-- <q-item-label caption>{{ caption }}</q-item-label> -->
+          </q-item-section>
+          <q-item-section>
+            <q-icon name="add" size="24px" @click.prevent="onAddMixtape"></q-icon>
           </q-item-section>
         </q-item>
         <LibraryList v-if="mixtapes" :mixtapes="mixtapes" />
@@ -56,6 +59,9 @@ import MediaPlayer from 'components/MediaPlayer.vue'
 import MainFooter from 'components/MainFooter.vue'
 import LibraryList from 'components/LibraryList.vue'
 import { useMixtapeStore } from 'stores/mixtape-store'
+// import { usePlayerStore } from 'stores/player-store'
+import { mixtapeService } from 'src/services/mixtape.service'
+import { useRouter } from 'vue-router'
 
 const links = [
   {
@@ -85,14 +91,23 @@ export default defineComponent({
     MainFooter,
     LibraryList
   },
-
+  
   setup() {
+    const router = useRouter();
+    // const playerStore = usePlayerStore()
+    // const currSong = computed(()=>playerStore.getCurrSong)
 
     const mixtapeStore = useMixtapeStore()
     onMounted( () => {
       mixtapeStore.loadMixtapes()
     });
+    
+    const onAddMixtape = async()=>{
+   
+      const newMixtape = await mixtapeStore.saveMixtape(mixtapeService.getEmptyMixtape())
+      router.push(`/mixtape/${newMixtape._id}`)
 
+    }
     
     const mixtapes = computed(()=> mixtapeStore.getMixtapes )
     const drawerMini = ref(true)
@@ -103,7 +118,8 @@ export default defineComponent({
       drawerMini,
       drawerOpen,
       mixtapes,
-
+      onAddMixtape,
+      // currSong,
       toggleDrawerSize() {
         drawerMini.value = !drawerMini.value
       }

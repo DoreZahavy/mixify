@@ -3,7 +3,8 @@ import { utilService } from "./util.service";
 export const youtubeService = {
   queryYT,
 };
-const API_KEY = "AIzaSyCqhq8Y4n72HaAbKOAeIdi5b27siFouIio";
+const API_KEY = import.meta.env.VITE_YT_API_KEY
+// const API_KEY = "AIzaSyCqhq8Y4n72HaAbKOAeIdi5b27siFouIio";
 const YT_SEARCH_KEY = "ytSearchDB";
 var gCacheSearches = _loadCacheSearches();
 

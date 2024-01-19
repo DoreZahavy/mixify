@@ -2,16 +2,17 @@
     <!-- <router-link :to="`/mixtape/${mixtape._id}`"> -->
 
         <q-item clickable v-ripple :to="`/mixtape/${mixtape._id}`" >
-            <q-item-section avatar>
-                <q-avatar>
+            <q-item-section  avatar>
+                <q-avatar rounded >
                     
-                    <img src="https://res.cloudinary.com/dtaiyvzq5/image/upload/v1692020104/m2pslfiyjn8tgx9hs5pw.png" alt="">
+                    <!-- <img src="https://res.cloudinary.com/dtaiyvzq5/image/upload/v1692020104/m2pslfiyjn8tgx9hs5pw.png" alt=""> -->
+                    <img :src="mixtape.imgUrl" alt="mixtape image">
                 </q-avatar>
             </q-item-section>
             
             <q-item-section>
                 <q-item-label>{{mixtape.name}}</q-item-label>
-                <q-item-label caption>Playlist * {{ mixtape.createdBy?.nickname }}</q-item-label>
+                <q-item-label caption>Mixtape * {{ mixtape.createdBy?.nickname }}</q-item-label>
             </q-item-section>
         </q-item>
     <!-- </router-link> -->
