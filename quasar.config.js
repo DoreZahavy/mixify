@@ -60,7 +60,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '/',
+      publicPath: '/mixify',
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -100,7 +100,7 @@ module.exports = configure(function (/* ctx */) {
 
       // Quasar plugins
       plugins: [],
-      base: '/mixify/'
+      // base: '/mixify/'
     },
 
     // animations: 'all', // --- includes all animations
