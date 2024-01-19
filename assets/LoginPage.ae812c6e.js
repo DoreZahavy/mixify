@@ -1,1 +1,0 @@
-import{Q as e}from"./QPage.159ee8d9.js";import{_ as a,y as o,z as t,A as r,I as s}from"./index.cc819744.js";import"./render.5df21c78.js";const n={name:"LoginPage"},c=s("h1",null,"Login",-1);function i(_,p,d,f,g,m){return o(),t(e,{padding:""},{default:r(()=>[c]),_:1})}var x=a(n,[["render",i]]);export{x as default};
